@@ -2,8 +2,10 @@
 
 **A simulated Franka Panda arm that takes a typed command, carries it out, and tells you whether it worked or why it didn't.**
 
-<video src="results/demo.mp4" controls muted loop width="720"></video>
+[**▶ Watch the demo**](results/demo.mp4) — `lang2act run "put all the cubes in the bowl" --video results/demo.mp4`
 
+```
+$ lang2act run "put the red cube in the bowl" --viewer
 
 Carried out 5 of 5 steps:
   - move_to(target=red_cube, offset_z=0.15) ok

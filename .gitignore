@@ -58,6 +58,8 @@ results/*
 *.gif
 *.png
 !docs/*.png
+# ...except the demo clip embedded at the top of the README.
+!results/demo.mp4
 llm_cache/
 
 # --- MuJoCo / OS noise ---
