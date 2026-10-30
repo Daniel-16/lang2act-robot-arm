@@ -62,7 +62,7 @@ results/*
 !docs/*.gif
 !docs/*.mp4
 # The demo clip, kept where the README points at it.
-!results/demo.mp4
+!results/demo-2.gif
 llm_cache/
 
 # --- MuJoCo / OS noise ---
