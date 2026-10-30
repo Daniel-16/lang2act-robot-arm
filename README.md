@@ -2,7 +2,9 @@
 
 **A simulated Franka Panda arm that takes a typed command, carries it out, and tells you whether it worked or why it didn't.**
 
-[**▶ Watch the demo**](results/demo.mp4) — `lang2act run "put all the cubes in the bowl" --video results/demo.mp4`
+![Demo video](./results/demo-2.gif)
+
+<sub><code>lang2act run "put all the cubes in the bowl"</code> &mdash; one command, 15 skill calls, every step verified against simulator state. No cuts. [Full-resolution MP4](results/demo.mp4).</sub>
 
 ```
 $ lang2act run "put the red cube in the bowl" --viewer
@@ -385,12 +387,12 @@ Headless runs **without** `--viewer` or `--video` need no GL at all — the eval
 | **3** | LLM planner, validator, executor, `run_command.py` | ✅ built; **run the 10-command demo and record the video with a real model** |
 | **4** | Grasp retries, clarify/infeasible paths, one re-plan | ✅ built and tested |
 | **5** | Frozen 30-command eval, per-episode logs, summary tables, layer breakdown | ✅ harness complete; **re-run with a real model for the reported number** |
-| **6** | Ship: README with results, demo video, write-up | 🔜 README and harness ready; video and write-up outstanding |
+| **6** | Ship: README with results, demo video, write-up | 🔜 clip embedded at the top; the 10-command reel and the write-up are outstanding |
 
 **Next steps, in order:**
 
 1. `export ANTHROPIC_API_KEY=...` and run `lang2act eval --seeds 3 --llm anthropic`. Paste the resulting `summary.md` table into [Results](#results).
-2. Record the 1–2 minute demo video across 10 commands (`lang2act run ... --video`) and link it at the top of this README.
+2. Extend the clip at the top into the full 1–2 minute reel across 10 commands (`lang2act run "..." --video`), so it also shows the relational placements, the clarifying question and the refusal. Convert it to `docs/demo.gif` — that is the file GitHub actually plays.
 3. Run the same frozen set on a second model and report success, cost per command and latency side by side.
 
 ---

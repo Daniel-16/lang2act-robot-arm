@@ -57,8 +57,11 @@ results/*
 *.mp4
 *.gif
 *.png
+# ...except anything in docs/, which is what the README embeds.
 !docs/*.png
-# ...except the demo clip embedded at the top of the README.
+!docs/*.gif
+!docs/*.mp4
+# The demo clip, kept where the README points at it.
 !results/demo.mp4
 llm_cache/
 
