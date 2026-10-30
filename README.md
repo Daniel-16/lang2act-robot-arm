@@ -2,7 +2,7 @@
 
 **A simulated Franka Panda arm that takes a typed command, carries it out, and tells you whether it worked or why it didn't.**
 
-![Demo video](./results/demo.gif)
+![Demo video](./results/demo-2.gif)
 
 
 ```
