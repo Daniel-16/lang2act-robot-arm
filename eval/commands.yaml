@@ -1,0 +1,203 @@
+# Lang2Act evaluation set -- 30 commands, frozen before any prompt tuning.
+#
+# Freeze this file. Tuning the prompt against commands you also score on is how
+# you end up reporting a number that means nothing. If a command turns out to be
+# badly worded, note it in the README's limitations instead of editing it.
+#
+# Each entry has:
+#   id        stable identifier, used in the log filenames
+#   command   exactly what gets typed
+#   category  simple | paraphrase | relational | multi | ambiguous | infeasible
+#   seed      scene seed; the eval runs seed, seed+1, seed+2
+#   goal      machine-checkable success condition (see lang2act/eval.py)
+#
+# Object specifiers in a goal may be a literal name (red_cube) or, resolved
+# against the *initial* layout, "nearest_to:bowl" / "farthest_from:bowl".
+
+# --- Simple placement (8) -------------------------------------------------- #
+- id: simple_01
+  command: put the red cube in the bowl
+  category: simple
+  seed: 1
+  goal: {type: in_region, object: red_cube, region: bowl}
+
+- id: simple_02
+  command: put the green cube in the bowl
+  category: simple
+  seed: 2
+  goal: {type: in_region, object: green_cube, region: bowl}
+
+- id: simple_03
+  command: put the blue cube in the bowl
+  category: simple
+  seed: 3
+  goal: {type: in_region, object: blue_cube, region: bowl}
+
+- id: simple_04
+  command: place the red cube into the bowl
+  category: simple
+  seed: 4
+  goal: {type: in_region, object: red_cube, region: bowl}
+
+- id: simple_05
+  command: pick up the green cube and put it in the bowl
+  category: simple
+  seed: 5
+  goal: {type: in_region, object: green_cube, region: bowl}
+
+- id: simple_06
+  command: put the blue cube inside the bowl
+  category: simple
+  seed: 6
+  goal: {type: in_region, object: blue_cube, region: bowl}
+
+- id: simple_07
+  command: move the red cube to the bowl
+  category: simple
+  seed: 7
+  goal: {type: in_region, object: red_cube, region: bowl}
+
+- id: simple_08
+  command: put the green cube in the bowl please
+  category: simple
+  seed: 8
+  goal: {type: in_region, object: green_cube, region: bowl}
+
+# --- Paraphrase and synonyms (6) ------------------------------------------ #
+- id: para_01
+  command: drop the crimson block into the dish
+  category: paraphrase
+  seed: 9
+  goal: {type: in_region, object: red_cube, region: bowl}
+
+- id: para_02
+  command: pop the emerald brick in the basin
+  category: paraphrase
+  seed: 10
+  goal: {type: in_region, object: green_cube, region: bowl}
+
+- id: para_03
+  command: stick the azure box in the container
+  category: paraphrase
+  seed: 11
+  goal: {type: in_region, object: blue_cube, region: bowl}
+
+- id: para_04
+  command: the scarlet block belongs in the dish
+  category: paraphrase
+  seed: 12
+  goal: {type: in_region, object: red_cube, region: bowl}
+
+- id: para_05
+  command: could you tidy the lime block into the bowl
+  category: paraphrase
+  seed: 13
+  goal: {type: in_region, object: green_cube, region: bowl}
+
+- id: para_06
+  command: navy block, into the bowl
+  category: paraphrase
+  seed: 14
+  goal: {type: in_region, object: blue_cube, region: bowl}
+
+# --- Relational (6) ------------------------------------------------------- #
+- id: rel_01
+  command: move the cube nearest the bowl to the left of the green one
+  category: relational
+  seed: 15
+  goal: {type: relative, object: "nearest_to:bowl", relation: left_of, reference: green_cube}
+
+- id: rel_02
+  command: put the blue cube to the left of the green cube
+  category: relational
+  seed: 16
+  goal: {type: relative, object: blue_cube, relation: left_of, reference: green_cube}
+
+- id: rel_03
+  command: put the red cube to the right of the blue cube
+  category: relational
+  seed: 17
+  goal: {type: relative, object: red_cube, relation: right_of, reference: blue_cube}
+
+- id: rel_04
+  command: place the green cube behind the red cube
+  category: relational
+  seed: 18
+  goal: {type: relative, object: green_cube, relation: behind, reference: red_cube}
+
+- id: rel_05
+  command: put the blue cube in front of the red cube
+  category: relational
+  seed: 19
+  goal: {type: relative, object: blue_cube, relation: in_front_of, reference: red_cube}
+
+- id: rel_06
+  command: move the cube farthest from the bowl to the left of the red cube
+  category: relational
+  # Seed chosen so the farthest cube is never the red one on any of the three
+  # seeds -- otherwise the goal would read "put the red cube left of itself".
+  seed: 34
+  goal: {type: relative, object: "farthest_from:bowl", relation: left_of, reference: red_cube}
+
+# --- Multi-object (4) ----------------------------------------------------- #
+- id: multi_01
+  command: put all the cubes in the bowl
+  category: multi
+  seed: 21
+  goal: {type: all_in_region, region: bowl}
+
+- id: multi_02
+  command: put every cube in the bowl
+  category: multi
+  seed: 22
+  goal: {type: all_in_region, region: bowl}
+
+- id: multi_03
+  command: tidy all the blocks into the dish
+  category: multi
+  seed: 23
+  goal: {type: all_in_region, region: bowl}
+
+- id: multi_04
+  command: clear the table, everything goes in the bowl
+  category: multi
+  seed: 24
+  goal: {type: all_in_region, region: bowl}
+
+# --- Ambiguous (3): must ask, must not move ------------------------------- #
+- id: amb_01
+  command: pick up the cube
+  category: ambiguous
+  seed: 25
+  goal: {type: clarify}
+
+- id: amb_02
+  command: put the block in the bowl
+  category: ambiguous
+  seed: 26
+  goal: {type: clarify}
+
+- id: amb_03
+  command: move it into the dish
+  category: ambiguous
+  seed: 27
+  goal: {type: clarify}
+
+# --- Infeasible (3): must refuse with a reason, must not move ------------- #
+- id: infeas_01
+  command: put the purple cube in the bowl
+  category: infeasible
+  seed: 28
+  goal: {type: refuse}
+
+- id: infeas_02
+  command: put the yellow cube in the bowl
+  category: infeasible
+  seed: 29
+  goal: {type: refuse}
+
+- id: infeas_03
+  command: put the orange block in the dish
+  category: infeasible
+  seed: 30
+  goal: {type: refuse}
