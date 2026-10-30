@@ -398,4 +398,4 @@ Headless runs **without** `--viewer` or `--video` need no GL at all — the eval
 
 ## License
 
-MIT. The Franka Panda model is from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) and carries its own license.
+Apache License 2.0 — see [LICENSE](./LICENSE). The Franka Panda model is from [MuJoCo Menagerie](https://github.com/google-deepmind/mujoco_menagerie) and carries its own license.
