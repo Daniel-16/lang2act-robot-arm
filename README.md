@@ -2,9 +2,8 @@
 
 **A simulated Franka Panda arm that takes a typed command, carries it out, and tells you whether it worked or why it didn't.**
 
-![Demo video](./results/demo-2.gif)
+![Demo video](./results/demo.gif)
 
-<sub><code>lang2act run "put all the cubes in the bowl"</code> &mdash; one command, 15 skill calls, every step verified against simulator state. No cuts. [Full-resolution MP4](results/demo.mp4).</sub>
 
 ```
 $ lang2act run "put the red cube in the bowl" --viewer
